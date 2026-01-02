@@ -28,6 +28,15 @@
         android:layout_marginBottom="48dp"/>
 
     <Button
+        android:id="@+id/btnDemoLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Entrar como Demo"
+        android:backgroundTint="@color/uber_green"
+        android:textColor="@color/white"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

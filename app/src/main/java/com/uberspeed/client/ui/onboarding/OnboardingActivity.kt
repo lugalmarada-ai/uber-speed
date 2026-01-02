@@ -6,7 +6,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.uberspeed.client.R
+import com.uberspeed.client.data.local.SessionManager
 import com.uberspeed.client.ui.auth.LoginActivity
+import com.uberspeed.client.ui.home.HomeActivity
 
 class OnboardingActivity : AppCompatActivity() {
     
@@ -15,6 +17,8 @@ class OnboardingActivity : AppCompatActivity() {
     private lateinit var description: TextView
     private lateinit var btnNext: Button
     private lateinit var btnSkip: Button
+    private lateinit var btnDemoLogin: Button
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +28,8 @@ class OnboardingActivity : AppCompatActivity() {
         description = findViewById(R.id.description)
         btnNext = findViewById(R.id.btnNext)
         btnSkip = findViewById(R.id.btnSkip)
+        btnDemoLogin = findViewById(R.id.btnDemoLogin)
+        sessionManager = SessionManager(this)
 
         updateUI()
 
@@ -38,6 +44,10 @@ class OnboardingActivity : AppCompatActivity() {
 
         btnSkip.setOnClickListener {
             finishOnboarding()
+        }
+
+        btnDemoLogin.setOnClickListener {
+            loginAsDemo()
         }
     }
 
@@ -57,6 +67,16 @@ class OnboardingActivity : AppCompatActivity() {
                 btnNext.text = getString(R.string.start)
             }
         }
+    }
+
+    private fun loginAsDemo() {
+        // Create demo session
+        sessionManager.saveAuthToken("demo-token-12345")
+        sessionManager.saveUser("Usuario Demo", "demo@uberspeed.com")
+        
+        // Navigate directly to Home
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
     }
 
     private fun finishOnboarding() {
