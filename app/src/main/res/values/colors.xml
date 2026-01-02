@@ -10,6 +10,7 @@
     
     <!-- Uber Speed Colors -->
     <color name="uber_black">#000000</color>
+    <color name="uber_green">#03DAC5</color>
     <color name="uber_white">#FFFFFF</color>
     <color name="uber_grey">#F6F6F6</color>
 </resources>
