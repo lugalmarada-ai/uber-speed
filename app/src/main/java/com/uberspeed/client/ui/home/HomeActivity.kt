@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
 
         sessionManager = SessionManager(this)
 
-        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val drawerLayout: DrawerLayout = binding.root as DrawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment)
         
