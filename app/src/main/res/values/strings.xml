@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Uber Speed</string>
+    <string name="welcome_message">Bienvenido a Uber Speed</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Transporte Seguro</string>
+    <string name="onboarding_desc_1">Viaja con confianza en Barinas.</string>
+    <string name="onboarding_title_2">Rápido y Fácil</string>
+    <string name="onboarding_desc_2">Solicita tu servicio en segundos.</string>
+    <string name="onboarding_title_3">Mejores Precios</string>
+    <string name="onboarding_desc_3">Tarifas justas y transparentes.</string>
+    <string name="skip">Saltar</string>
+    <string name="start">Comenzar</string>
+    <string name="next">Siguiente</string>
+
+    <!-- Auth -->
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="register_title">Registrarse</string>
+    <string name="email_hint">Correo Electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="phone_hint">Teléfono</string>
+    <string name="name_hint">Nombre Completo</string>
+    <string name="login_button">Ingresar</string>
+    <string name="register_button">Crear Cuenta</string>
+    <string name="no_account">¿No tienes cuenta? Regístrate</string>
+    <string name="already_have_account">¿Ya tienes cuenta? Inicia Sesión</string>
+
+    <!-- Home -->
+    <string name="where_to">¿A dónde vas?</string>
+    <string name="select_service">Selecciona un servicio</string>
+    <string name="request_ride">Solicitar Viaje</string>
+</resources>
