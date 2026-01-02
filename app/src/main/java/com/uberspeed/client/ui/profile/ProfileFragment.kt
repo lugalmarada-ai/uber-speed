@@ -24,8 +24,8 @@ class ProfileFragment : Fragment() {
         val tvName = root.findViewById<TextView>(R.id.tvProfileName)
         val tvEmail = root.findViewById<TextView>(R.id.tvProfileEmail)
 
-        val name = sessionManager.prefs.getString(SessionManager.KEY_USER_NAME, "User")
-        val email = sessionManager.prefs.getString(SessionManager.KEY_USER_EMAIL, "user@example.com")
+        val name = sessionManager.getUserName()
+        val email = sessionManager.getUserEmail()
 
         tvName.text = name
         tvEmail.text = email

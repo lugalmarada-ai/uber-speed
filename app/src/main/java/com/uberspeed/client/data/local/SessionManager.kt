@@ -31,4 +31,12 @@ class SessionManager(context: Context) {
     fun clearSession() {
         prefs.edit().clear().apply()
     }
+
+    fun getUserName(): String {
+        return prefs.getString(KEY_USER_NAME, "User") ?: "User"
+    }
+
+    fun getUserEmail(): String {
+        return prefs.getString(KEY_USER_EMAIL, "user@example.com") ?: "user@example.com"
+    }
 }

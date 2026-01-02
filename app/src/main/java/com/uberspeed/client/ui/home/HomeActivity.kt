@@ -58,8 +58,8 @@ class HomeActivity : AppCompatActivity() {
         val tvName = headerView.findViewById<TextView>(R.id.tvUserName)
         val tvEmail = headerView.findViewById<TextView>(R.id.tvUserEmail)
 
-        val name = sessionManager.prefs.getString(SessionManager.KEY_USER_NAME, "User")
-        val email = sessionManager.prefs.getString(SessionManager.KEY_USER_EMAIL, "user@example.com")
+        val name = sessionManager.getUserName()
+        val email = sessionManager.getUserEmail()
         
         tvName?.text = name
         tvEmail?.text = email
