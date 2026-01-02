@@ -4,40 +4,36 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.uberspeed.client.R
 import com.uberspeed.client.data.local.SessionManager
-import com.uberspeed.client.databinding.ActivityHomeBinding
 import com.uberspeed.client.ui.auth.LoginActivity
-import com.google.android.material.navigation.NavigationView
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityHomeBinding
     private lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
 
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         sessionManager = SessionManager(this)
 
-        val drawerLayout: DrawerLayout = binding.root as DrawerLayout
-        val navView: NavigationView = binding.navView
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        val navView = findViewById<NavigationView>(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_history, R.id.nav_profile
@@ -65,8 +61,8 @@ class HomeActivity : AppCompatActivity() {
         val name = sessionManager.prefs.getString(SessionManager.KEY_USER_NAME, "User")
         val email = sessionManager.prefs.getString(SessionManager.KEY_USER_EMAIL, "user@example.com")
         
-        tvName.text = name
-        tvEmail.text = email
+        tvName?.text = name
+        tvEmail?.text = email
     }
 
     override fun onSupportNavigateUp(): Boolean {
