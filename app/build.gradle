@@ -19,10 +19,26 @@ android {
         manifestPlaceholders = [MAPS_API_KEY: "YOUR_API_KEY_HERE"]
     }
 
+    
+    signingConfigs {
+        release {
+            // Use environment variables or gradle.properties for security
+            storeFile file(System.getenv("KEYSTORE_FILE") ?: "../release-key.jks")
+            storePassword System.getenv("KEYSTORE_PASSWORD") ?: ""
+            keyAlias System.getenv("KEY_ALIAS") ?: "uber-speed"
+            keyPassword System.getenv("KEY_PASSWORD") ?: ""
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
         }
     }
     

@@ -8,3 +8,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Keystore files (SECURITY)
+*.jks
+*.keystore
+release-key.*
