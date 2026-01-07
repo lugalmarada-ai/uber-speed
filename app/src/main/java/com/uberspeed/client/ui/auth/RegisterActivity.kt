@@ -61,7 +61,7 @@ class RegisterActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     val response = resource.data
                     if (response != null && response.success) {
-                        response.user?.token?.let { sessionManager.saveAuthToken(it) }
+                        response.token?.let { sessionManager.saveAuthToken(it) }
                         response.user?.let { sessionManager.saveUser(it.name, it.email) }
 
                         startActivity(Intent(this, HomeActivity::class.java))
