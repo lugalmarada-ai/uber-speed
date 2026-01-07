@@ -32,6 +32,17 @@ class AuthRepository {
         if (response.isSuccessful && response.body() != null) {
             return Resource.Success(response.body()!!)
         }
-        return Resource.Error(response.message())
+        val errorMsg = try {
+            val errorBody = response.errorBody()?.string()
+            if (errorBody != null) {
+                val json = org.json.JSONObject(errorBody)
+                json.optString("message", response.message())
+            } else {
+                response.message()
+            }
+        } catch (e: Exception) {
+            response.message()
+        }
+        return Resource.Error(errorMsg ?: "Unknown error")
     }
 }
