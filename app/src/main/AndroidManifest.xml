@@ -35,7 +35,9 @@
         <activity android:name=".ui.onboarding.OnboardingActivity" />
         <activity android:name=".ui.auth.LoginActivity" />
         <activity android:name=".ui.auth.RegisterActivity" />
-        <activity android:name=".ui.home.HomeActivity" />
+        <activity 
+            android:name=".ui.home.HomeActivity"
+            android:theme="@style/Theme.UberSpeed.NoActionBar" />
         
     </application>
 
