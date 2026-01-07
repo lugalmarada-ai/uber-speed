@@ -56,8 +56,11 @@ const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Check for user email
-        const user = await User.findOne({ email }).select('+password');
+        // Check for user by email OR phone (input 'email' might be a phone number)
+        const isEmail = email.includes('@');
+        const query = isEmail ? { email } : { phone: email };
+
+        const user = await User.findOne(query).select('+password');
 
         if (user && (await bcrypt.compare(password, user.password))) {
             res.json({

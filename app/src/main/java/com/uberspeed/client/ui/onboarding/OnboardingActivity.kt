@@ -35,7 +35,6 @@ class OnboardingActivity : AppCompatActivity() {
             val description = findViewById<TextView>(R.id.description)
             val btnNext = findViewById<Button>(R.id.btnNext)
             val btnSkip = findViewById<Button>(R.id.btnSkip)
-            val btnDemoLogin = findViewById<Button>(R.id.btnDemoLogin)
 
             updateUI(title, description, btnNext)
 
@@ -50,10 +49,6 @@ class OnboardingActivity : AppCompatActivity() {
 
             btnSkip.setOnClickListener {
                 finishOnboarding()
-            }
-
-            btnDemoLogin.setOnClickListener {
-                loginAsDemo()
             }
             
             Log.d(TAG, "onCreate completed successfully")
@@ -83,20 +78,6 @@ class OnboardingActivity : AppCompatActivity() {
             }
         } catch (e: Exception) {
             Log.e(TAG, "Error updating UI", e)
-        }
-    }
-
-    private fun loginAsDemo() {
-        try {
-            Log.d(TAG, "Logging in as demo user")
-            sessionManager.saveAuthToken("demo-token-12345")
-            sessionManager.saveUser("Usuario Demo", "demo@uberspeed.com")
-            
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
-        } catch (e: Exception) {
-            Log.e(TAG, "Error in loginAsDemo", e)
-            Toast.makeText(this, "Demo Login Error: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 

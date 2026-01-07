@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
             val password = etPassword.text.toString().trim()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
+                android.util.Log.d("LoginActivity", "Attempting login for: $email")
                 viewModel.login(email, password)
             } else {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()

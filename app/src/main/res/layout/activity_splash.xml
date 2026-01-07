@@ -19,7 +19,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="80dp"
         android:indeterminateTint="@color/white" />
+
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:text="Versión"/>
 
 </RelativeLayout>

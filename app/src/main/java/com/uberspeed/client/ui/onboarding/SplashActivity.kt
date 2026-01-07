@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.uberspeed.client.R
+import android.widget.TextView
 
 class SplashActivity : AppCompatActivity() {
     
@@ -23,15 +24,21 @@ class SplashActivity : AppCompatActivity() {
             setContentView(R.layout.activity_splash)
             Log.d(TAG, "setContentView completed")
             
+            try {
+                val pInfo = packageManager.getPackageInfo(packageName, 0)
+                val version = pInfo.versionName
+                val tvVersion = findViewById<TextView>(R.id.tvVersion)
+                tvVersion.text = "Ver. $version"
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
             Handler(Looper.getMainLooper()).postDelayed({
                 try {
-                    Log.d(TAG, "Navigating to OnboardingActivity")
-                    val intent = Intent(this, OnboardingActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, OnboardingActivity::class.java))
                     finish()
                 } catch (e: Exception) {
-                    Log.e(TAG, "Error navigating to OnboardingActivity", e)
-                    Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                    Log.e(TAG, "Error navigating", e)
                 }
             }, 2000)
             

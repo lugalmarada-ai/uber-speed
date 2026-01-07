@@ -27,6 +27,9 @@ app.get('/', (req, res) => {
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'OK', message: 'Service is healthy' });
 });
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'OK', message: 'API Proxy is working' });
+});
 
 const PORT = process.env.PORT || 3000;
 

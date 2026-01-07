@@ -37,9 +37,15 @@ class RegisterActivity : AppCompatActivity() {
             val email = etEmail.text.toString().trim()
             val phone = etPhone.text.toString().trim()
             val password = etPassword.text.toString().trim()
+            val confirmPassword = findViewById<EditText>(R.id.etConfirmPassword).text.toString().trim()
 
             if (name.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty() && password.isNotEmpty()) {
-                viewModel.register(name, email, phone, password)
+                if (password == confirmPassword) {
+                    android.util.Log.d("RegisterActivity", "Registering: $email")
+                    viewModel.register(name, email, phone, password)
+                } else {
+                    Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             }
