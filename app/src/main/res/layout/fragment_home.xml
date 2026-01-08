@@ -14,44 +14,70 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/searchCard"
+        app:layout_constraintBottom_toTopOf="@id/bottomPanel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Search/Action Card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/searchCard"
+    <!-- Bottom Panel -->
+    <LinearLayout
+        android:id="@+id/bottomPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@id/btnRequest"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/tvWhereTo"
+        <!-- Origin Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilOrigin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/where_to"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:drawableStart="@android:drawable/ic_menu_search"
-            android:drawablePadding="16dp"/>
+            android:hint="📍 Tu ubicación"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    </androidx.cardview.widget.CardView>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etOrigin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:text="Ubicación actual"
+                android:enabled="false" />
 
-    <!-- Request Button -->
-    <Button
-        android:id="@+id/btnRequest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/request_ride"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/uber_black"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Destination Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDestination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="🎯 ¿A dónde vas?"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDestination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Request Button -->
+        <Button
+            android:id="@+id/btnRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/request_ride"
+            android:backgroundTint="@color/uber_black"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:padding="16dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

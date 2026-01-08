@@ -49,42 +49,6 @@
         android:textColor="@color/white"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Divider -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginVertical="16dp">
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"
-            android:background="#DDDDDD" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="  o continúa con  "
-            android:textColor="#888888"
-            android:textSize="12sp" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"
-            android:background="#DDDDDD" />
-
-    </LinearLayout>
-
-    <!-- Google Sign-In Button -->
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/btnGoogleSignIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp" />
-
     <TextView
         android:id="@+id/tvRegister"
         android:layout_width="wrap_content"
@@ -94,4 +58,3 @@
         android:textSize="14sp"/>
 
 </LinearLayout>
-

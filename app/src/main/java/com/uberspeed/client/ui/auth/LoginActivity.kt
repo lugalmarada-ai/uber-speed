@@ -7,10 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.gms.common.SignInButton
 import com.uberspeed.client.R
 import com.uberspeed.client.data.local.SessionManager
 import com.uberspeed.client.ui.driver.DriverHomeActivity
@@ -25,35 +23,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModel: AuthViewModel
     private lateinit var sessionManager: SessionManager
-    private lateinit var googleAuthHelper: GoogleAuthHelper
-
-    // Activity result launcher for Google Sign-In
-    private val googleSignInLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        googleAuthHelper.handleSignInResult(
-            result.data,
-            onSuccess = { account ->
-                Log.d(TAG, "Google Sign-In success: ${account.email}")
-                // Save user info from Google account
-                sessionManager.saveUser(
-                    name = account.displayName ?: "Usuario",
-                    email = account.email ?: "",
-                    role = "user", // Default role for Google sign-in
-                    userId = account.id ?: ""
-                )
-                // Save a placeholder token (in production, exchange for backend token)
-                sessionManager.saveAuthToken(account.idToken ?: "google_auth")
-                
-                Toast.makeText(this, "✅ Bienvenido ${account.displayName}!", Toast.LENGTH_SHORT).show()
-                navigateToHome()
-            },
-            onError = { error ->
-                Log.e(TAG, "Google Sign-In failed: $error")
-                Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
-            }
-        )
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,13 +30,11 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[AuthViewModel::class.java]
         sessionManager = SessionManager(this)
-        googleAuthHelper = GoogleAuthHelper(this)
 
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val tvRegister = findViewById<TextView>(R.id.tvRegister)
-        val btnGoogleSignIn = findViewById<SignInButton>(R.id.btnGoogleSignIn)
 
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
@@ -77,13 +44,8 @@ class LoginActivity : AppCompatActivity() {
                 Log.d(TAG, "Attempting login for: $email")
                 viewModel.login(email, password)
             } else {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
             }
-        }
-
-        btnGoogleSignIn.setOnClickListener {
-            Log.d(TAG, "Starting Google Sign-In")
-            googleSignInLauncher.launch(googleAuthHelper.getSignInIntent())
         }
 
         tvRegister.setOnClickListener {
@@ -115,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
                         // Navigate based on user role
                         navigateToHome()
                     } else {
-                        Toast.makeText(this, response?.message ?: "Login failed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, response?.message ?: "Error al iniciar sesión", Toast.LENGTH_SHORT).show()
                     }
                 }
                 is Resource.Error -> {
@@ -137,5 +99,3 @@ class LoginActivity : AppCompatActivity() {
         finishAffinity()
     }
 }
-
-
