@@ -17,8 +17,13 @@ const register = async (req, res) => {
         }
 
         // Hash password
+        console.log('------------------------------------------------');
+        console.log('REGISTER START for:', email);
+        console.log('Register Pass received:', password);
+        
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
+        console.log('Generated Hash:', hashedPassword);
 
         // Create user
         const user = await User.create({
@@ -55,26 +60,39 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
+        console.log('------------------------------------------------');
+        console.log('LOGIN START for:', email);
+        console.log('Login Pass received:', password);
 
         // Check for user by email OR phone (input 'email' might be a phone number)
         const isEmail = email.includes('@');
         const query = isEmail ? { email } : { phone: email };
 
         const user = await User.findOne(query).select('+password');
-
-        if (user && (await bcrypt.compare(password, user.password))) {
-            res.json({
-                success: true,
-                token: generateToken(user._id),
-                user: {
-                    id: user.id,
-                    name: user.name,
-                    email: user.email,
-                    role: user.role
-                }
-            });
+        console.log('User found:', !!user);
+        
+        if (user) {
+             console.log('Stored DB Hash:', user.password);
+             const isMatch = await bcrypt.compare(password, user.password);
+             console.log('Bcrypt Compare Result:', isMatch);
+             
+             if (isMatch) {
+                 res.json({
+                    success: true,
+                    token: generateToken(user._id),
+                    user: {
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                        role: user.role
+                    }
+                });
+             } else {
+                 res.status(401).json({ message: 'Invalid credentials' });
+             }
         } else {
-            res.status(401).json({ message: 'Invalid credentials' });
+             // User not found
+             res.status(401).json({ message: 'Invalid credentials' });
         }
     } catch (error) {
         console.error(error);

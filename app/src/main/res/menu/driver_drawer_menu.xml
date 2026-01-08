@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_driver_home"
+            android:icon="@android:drawable/ic_menu_compass"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/nav_driver_earnings"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Mis Ganancias" />
+        <item
+            android:id="@+id/nav_driver_history"
+            android:icon="@android:drawable/ic_menu_recent_history"
+            android:title="Historial de Viajes" />
+        <item
+            android:id="@+id/nav_driver_profile"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="Mi Perfil" />
+    </group>
+
+    <item android:title="Configuración">
+        <menu>
+            <item
+                android:id="@+id/nav_driver_vehicle"
+                android:icon="@android:drawable/ic_menu_send"
+                android:title="Mi Vehículo" />
+            <item
+                android:id="@+id/nav_driver_bank"
+                android:icon="@android:drawable/ic_lock_idle_lock"
+                android:title="Datos Bancarios" />
+        </menu>
+    </item>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_driver_help"
+                android:icon="@android:drawable/ic_menu_help"
+                android:title="Ayuda" />
+            <item
+                android:id="@+id/nav_driver_logout"
+                android:icon="@android:drawable/ic_menu_close_clear_cancel"
+                android:title="Cerrar Sesión" />
+        </menu>
+    </item>
+
+</menu>

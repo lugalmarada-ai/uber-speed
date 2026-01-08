@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/driver_nav_graph"
+    app:startDestination="@id/nav_driver_home">
+
+    <fragment
+        android:id="@+id/nav_driver_home"
+        android:name="com.uberspeed.client.ui.driver.DriverHomeFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_driver_home" />
+
+    <fragment
+        android:id="@+id/nav_driver_earnings"
+        android:name="com.uberspeed.client.ui.driver.DriverEarningsFragment"
+        android:label="Mis Ganancias"
+        tools:layout="@layout/fragment_driver_earnings" />
+
+    <fragment
+        android:id="@+id/nav_driver_history"
+        android:name="com.uberspeed.client.ui.driver.DriverHistoryFragment"
+        android:label="Historial"
+        tools:layout="@layout/fragment_driver_history" />
+
+    <fragment
+        android:id="@+id/nav_driver_profile"
+        android:name="com.uberspeed.client.ui.driver.DriverProfileFragment"
+        android:label="Mi Perfil"
+        tools:layout="@layout/fragment_driver_profile" />
+
+    <fragment
+        android:id="@+id/activeTrip"
+        android:name="com.uberspeed.client.ui.driver.ActiveTripFragment"
+        android:label="Viaje Activo"
+        tools:layout="@layout/fragment_active_trip" />
+
+</navigation>

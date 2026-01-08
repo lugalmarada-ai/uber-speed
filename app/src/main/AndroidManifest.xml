@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
 
     <application
         android:name=".UberSpeedApp"
@@ -40,6 +43,18 @@
             android:name=".ui.home.HomeActivity"
             android:theme="@style/Theme.UberSpeed.NoActionBar" />
         
+        <!-- Driver Activities -->
+        <activity 
+            android:name=".ui.driver.DriverHomeActivity"
+            android:theme="@style/Theme.UberSpeed.NoActionBar" />
+        
+        <!-- Chat Activity -->
+        <activity android:name=".ui.chat.ChatActivity" />
+        
+        <!-- Payment Activity -->
+        <activity android:name=".ui.payment.PaymentActivity" />
+        
     </application>
 
 </manifest>
+

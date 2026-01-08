@@ -11,6 +11,8 @@ class SessionManager(context: Context) {
         const val KEY_TOKEN = "auth_token"
         const val KEY_USER_NAME = "user_name"
         const val KEY_USER_EMAIL = "user_email"
+        const val KEY_USER_ROLE = "user_role"
+        const val KEY_USER_ID = "user_id"
     }
 
     fun saveAuthToken(token: String) {
@@ -21,10 +23,12 @@ class SessionManager(context: Context) {
         return prefs.getString(KEY_TOKEN, null)
     }
 
-    fun saveUser(name: String, email: String) {
+    fun saveUser(name: String, email: String, role: String = "user", userId: String = "") {
         prefs.edit()
             .putString(KEY_USER_NAME, name)
             .putString(KEY_USER_EMAIL, email)
+            .putString(KEY_USER_ROLE, role)
+            .putString(KEY_USER_ID, userId)
             .apply()
     }
 
@@ -38,5 +42,21 @@ class SessionManager(context: Context) {
 
     fun getUserEmail(): String {
         return prefs.getString(KEY_USER_EMAIL, "user@example.com") ?: "user@example.com"
+    }
+
+    fun getUserRole(): String {
+        return prefs.getString(KEY_USER_ROLE, "user") ?: "user"
+    }
+
+    fun getUserId(): String {
+        return prefs.getString(KEY_USER_ID, "") ?: ""
+    }
+
+    fun isDriver(): Boolean {
+        return getUserRole() == "driver"
+    }
+
+    fun isAdmin(): Boolean {
+        return getUserRole() == "admin"
     }
 }
