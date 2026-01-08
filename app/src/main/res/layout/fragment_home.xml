@@ -7,39 +7,14 @@
     android:background="@color/uber_grey"
     tools:context=".ui.home.HomeFragment">
 
-    <!-- Demo Header -->
-    <TextView
-        android:id="@+id/tvDemoMode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="🚗 MODO DEMO - Sin backend conectado"
-        android:textSize="14sp"
-        android:textColor="@color/white"
-        android:background="@color/uber_green"
-        android:padding="12dp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <!-- Map Placeholder -->
-    <View
-        android:id="@+id/mapPlaceholder"
+    <!-- Google Map Fragment -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#E0E0E0"
-        app:layout_constraintTop_toBottomOf="@id/tvDemoMode"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/searchCard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="📍 Mapa\n(Requiere Google Maps API)"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="@id/mapPlaceholder"
-        app:layout_constraintBottom_toBottomOf="@id/mapPlaceholder"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

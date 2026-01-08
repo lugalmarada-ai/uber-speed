@@ -75,7 +75,6 @@ class HomeActivity : AppCompatActivity() {
             updateNavHeader(navView)
             
             Log.d(TAG, "onCreate completed successfully")
-            Toast.makeText(this, "🚗 Bienvenido a Uber Speed Demo!", Toast.LENGTH_SHORT).show()
 
         } catch (e: Exception) {
             Log.e(TAG, "Error in onCreate", e)
